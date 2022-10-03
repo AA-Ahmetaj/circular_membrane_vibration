@@ -6,10 +6,10 @@ from scipy.special import jv, jn_zeros
 from tqdm.auto import tqdm
 from functools import lru_cache
 
-RADIUS = 1
-SPEED_OF_SOUND = 0.8
+RADIUS = 1 # Radius of membrane
+SPEED_OF_SOUND = 0.8 
 ## jn_zeros(m,n), m is the order of bessel's function and n is the number of roots 
-BESSEL_ROOTS = [jn_zeros(m, 10) for m in range(10)]
+BESSEL_ROOTS = [jn_zeros(m, 10) for m in range(10)] # 10 bessel roots for 10 vibration modes, to save computational space
 FPS = 25 ### here you specify the FPS 
 TIME_PER_MODE = 3 #time the animation will spend on each mode
 ## Here are the modes to be animated, e.g mode = (1,0) is the mode where the bessel's function order is 1 and the first root 
@@ -65,7 +65,8 @@ theta = np.linspace(0, 2 * np.pi, 100)
 r, theta = np.meshgrid(r, theta)
 x = np.cos(theta) * r
 y = np.sin(theta) * r
-z = circular_membrane(r, theta, 0, 0, 0, RADIUS, SPEED_OF_SOUND) 
+z = circular_membrane(r, theta, 0, 0, 0, RADIUS, SPEED_OF_SOUND) # initial vibration mode
+## The following loop adds the first ten modes together
 for a in range(1,len(MODES)):
     	z += circular_membrane(r, theta, t, MODES[a][0], MODES[a][1], RADIUS, SPEED_OF_SOUND)
 vmin, vmax = get_vmin_vmax(3, 1)
@@ -99,7 +100,7 @@ text = ax.text2D(
 def init():
     pass
 
-## this function adds the first ten modes 
+## this function plots the vibration that results from adding the first ten modes 
 def update(i, bar=None):
     global plot
 
