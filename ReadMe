@@ -1,4 +1,4 @@
 The code contained in this directory creates an animation of a circular memrbane vibration. The states of vibration are calculated by adding ten vibration modes.
 The vibration modes are described using Bessel's roots.
-The User should provide the initial conditions to the membrane vibration (inital point of impact in polar coordinates) and thhe User can play around with the fps of the animation.
+The User should provide the initial conditions to the membrane vibration (inital point of impact in polar coordinates) and the User can play around with the fps of the animation.
 The file on this repository was mainly based on the python plotting codes of this repo :https://github.com/maxnoe/python-plotting created by Maximilian Linhoff. 
